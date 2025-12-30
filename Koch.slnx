@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Configs/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Folder Name="/Docs/">
+    <File Path="CHANGELOG.md" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Koch/Koch.csproj" />
+</Solution>

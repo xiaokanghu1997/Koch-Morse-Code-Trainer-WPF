@@ -1,2 +1,8 @@
-# Koch-Morse-Code-Trainer-WPF
-基于Koch方法的莫尔斯电码训练器 - A Morse Code Trainer based on Koch Method
+# Koch - 摩尔斯电码训练器
+
+基于Koch方法的摩尔斯电码学习工具
+
+## 版本信息
+- **当前版本**: 0.0.0
+- **作者**: Xiaokang HU
+- **更新日期**: 2025-12-30

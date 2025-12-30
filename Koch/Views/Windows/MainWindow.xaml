@@ -1,0 +1,100 @@
+﻿<ui:FluentWindow
+    x:Class="Koch.Views.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="{Binding Title}"
+    Width="800"
+    Height="600"
+    WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  欢迎消息  -->
+            <ui:Card Grid.Row="0" Margin="0,0,0,20" Padding="20">
+                <StackPanel>
+                    <TextBlock
+                    FontSize="28"
+                    FontWeight="Bold"
+                    Text="{Binding WelcomeMessage}"
+                    TextAlignment="Center" />
+
+                    <TextBlock
+                    Margin="0,10,0,0"
+                    FontSize="16"
+                    Opacity="0.7"
+                    Text="这是一个基于 WPF UI 的 MVVM 示例应用"
+                    TextAlignment="Center" />
+                </StackPanel>
+            </ui:Card>
+
+            <!--  中间内容区域  -->
+            <ui:Card Grid.Row="1" Margin="0,0,0,20">
+                <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                    <Border
+                    Padding="30"
+                    Background="#2A2A2A"
+                    CornerRadius="8">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock
+                            FontSize="18"
+                            Opacity="0.7"
+                            Text="点击次数"
+                            TextAlignment="Center" />
+
+                            <TextBlock
+                            Margin="0,10,0,0"
+                            FontSize="48"
+                            FontWeight="Bold"
+                            Text="{Binding ClickCount}"
+                            TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="14"
+                    Opacity="0.6"
+                    Text="点击下方按钮进行交互"
+                    TextAlignment="Center" />
+                </StackPanel>
+            </ui:Card>
+
+            <!--  按钮区域  -->
+            <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+
+                <ui:Button
+                Width="150"
+                Height="40"
+                Margin="0,0,10,0"
+                Appearance="Primary"
+                Command="{Binding ClickCommand}"
+                Content="点击计数" />
+
+                <ui:Button
+                Width="150"
+                Height="40"
+                Appearance="Secondary"
+                Command="{Binding ShowNotificationCommand}"
+                Content="显示通知" />
+            </StackPanel>
+
+            <!--  Snackbar 容器  -->
+            <ui:SnackbarPresenter
+            x:Name="SnackbarPresenter"
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center" />
+    </Grid>
+</ui:FluentWindow>
