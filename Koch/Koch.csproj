@@ -12,18 +12,8 @@
     <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+	<NoWarn>$(NoWarn);SYSLIB1054;CA1806</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Assets\AppIcon176.scale-400.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-100.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-125.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-150.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-200.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-400.png" />
-    <None Remove="Assets\Icons\SplashScreen.scale-400.png" />
-    <None Remove="Views\Pages\SettingsPage.xaml" />
-    <None Remove="Views\Windows\MainWindow.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />

@@ -35,6 +35,26 @@
                     <FontIcon Glyph="&#xE890;" />
                 </controls:SettingsCard.HeaderIcon>
 
+                <!--右侧控件-->
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    Spacing="10">
+                    <Slider 
+                        Width="120"
+                        Minimum="0.1"
+                        Maximum="1.0"
+                        StepFrequency="0.01"
+                        TickFrequency="0.1"
+                        TickPlacement="None"
+                        IsThumbToolTipEnabled="False"
+                        Value="{x:Bind ViewModel.WindowOpacity, Mode=TwoWay}" />
+                    <TextBlock 
+                        Text="{x:Bind ViewModel.OpacityPercentage, Mode=OneWay}"
+                        VerticalAlignment="Center"
+                        Width="35"
+                        TextAlignment="Right"
+                        FontWeight="SemiBold" />
+                </StackPanel>
             </controls:SettingsCard>
 
             <!--音量设置-->
@@ -45,6 +65,25 @@
                     <FontIcon Glyph="&#xE767;" />
                 </controls:SettingsCard.HeaderIcon>
 
+                <!--右侧控件-->
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    Spacing="10">
+                    <Slider 
+                        Width="120"
+                        Minimum="0.1"
+                        Maximum="1.0"
+                        StepFrequency="0.01"
+                        TickFrequency="0.1"
+                        TickPlacement="None"
+                        IsThumbToolTipEnabled="False" />
+                    <TextBlock 
+                        Text="100%"
+                        VerticalAlignment="Center"
+                        Width="35"
+                        TextAlignment="Right"
+                        FontWeight="SemiBold" />
+                </StackPanel>
             </controls:SettingsCard>
 
             <!--波形图开关-->
@@ -55,6 +94,10 @@
                     <FontIcon Glyph="&#xE9D9;" />
                 </controls:SettingsCard.HeaderIcon>
 
+                <!--右侧控件-->
+                <ToggleSwitch 
+                    OnContent="On" 
+                    OffContent="Off" />
             </controls:SettingsCard>
         </StackPanel>
     </Grid>

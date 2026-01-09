@@ -13,7 +13,7 @@ namespace Koch.Views.Windows
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        private readonly IThemeService _themeService;
+        private readonly IAppearanceService _appearanceService;
 
         private readonly IServiceProvider _serviceProvider;
 
@@ -22,36 +22,42 @@ namespace Koch.Views.Windows
         public MainWindow(
             MainWindowViewModel viewModel, 
             IWindowService windowService,
-            IThemeService themeService,
+            IAppearanceService appearanceService,
             IServiceProvider serviceProvider)
         {
             InitializeComponent();
 
             ViewModel = viewModel;
-            _themeService = themeService;
+            _appearanceService = appearanceService;
             _serviceProvider = serviceProvider;
 
             // 订阅主题服务事件
-            _themeService.ThemeChanged += OnThemeChanged;
+            _appearanceService.ThemeChanged += OnAppearanceChanged;
+            _appearanceService.OpacityChanged += OnAppearanceChanged;
 
             // 隐藏系统默认标题栏
             ExtendsContentIntoTitleBar = true;
             // 用WinUI标题栏替换系统标题栏
             SetTitleBar(AppTitleBar);
 
-            // 设置窗口大小
-            windowService.SetFixedWindowSize(this, 1200, 530);
+            // 设置窗口大小（1200，530）
+            windowService.SetFixedWindowSize(this, 1500, 710);
 
-            // 应用初始主题
-            _themeService.ApplyTheme(this);
+            // 应用外观
+            _appearanceService.ApplyAppearance(this);
 
             // 默认导航栏到练习页面
             NavigationView.SelectedItem = NavigationView.MenuItems[0];
         }
 
-        private void OnThemeChanged(AppTheme _)
+        private void OnAppearanceChanged(AppTheme _)
         {
-            _themeService.ApplyTheme(this);
+            _appearanceService.ApplyAppearance(this);
+        }
+
+        private void OnAppearanceChanged(double _)
+        {
+            _appearanceService.ApplyAppearance(this);
         }
 
         private void NavigationView_SelectionChanged(NavigationView _, NavigationViewSelectionChangedEventArgs args)

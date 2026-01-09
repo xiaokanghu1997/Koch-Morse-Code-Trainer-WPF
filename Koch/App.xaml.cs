@@ -23,9 +23,9 @@ namespace Koch
             InitializeComponent();
             _serviceProvider = ConfigureServices();
 
-            // 初始化主题服务（加载保存的主题设置）
-            var themeService = _serviceProvider.GetRequiredService<IThemeService>();
-            themeService.Initialize();
+            // 初始化外观服务（加载保存的设置）
+            var appearanceService = _serviceProvider.GetRequiredService<IAppearanceService>();
+            appearanceService.Initialize();
 
             // 注册应用退出时释放资源
             UnhandledException += (sender, e) => DisposeServices();
@@ -41,7 +41,7 @@ namespace Koch
             // 注册 Services
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IWindowService, WindowService>();
-            services.AddSingleton<IThemeService, ThemeService>();
+            services.AddSingleton<IAppearanceService, AppearanceService>();
 
             // 注册 Page ViewModels
             services.AddTransient<SettingsPageViewModel>();
