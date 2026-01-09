@@ -1,11 +1,13 @@
 <Solution>
-  <Folder Name="/Configs/">
-    <File Path=".gitignore" />
-  </Folder>
-  <Folder Name="/Docs/">
-    <File Path="CHANGELOG.md" />
-    <File Path="LICENSE" />
-    <File Path="README.md" />
-  </Folder>
-  <Project Path="Koch/Koch.csproj" />
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Koch/Koch.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy />
+  </Project>
 </Solution>

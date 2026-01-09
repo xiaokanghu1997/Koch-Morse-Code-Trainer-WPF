@@ -1,0 +1,61 @@
+<Page
+    x:Class="Koch.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Koch.Views.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+
+    <Grid 
+        Padding="20,10">
+        <StackPanel 
+            Spacing="5">
+            <!--主题设置-->
+            <controls:SettingsCard
+                Header="Application theme"
+                Description="Select which application theme to display">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE790;" />
+                </controls:SettingsCard.HeaderIcon>
+
+                <!-- 右侧控件 -->
+                <ComboBox 
+                        Width="140"
+                        ItemsSource="{x:Bind ViewModel.ThemeOptions, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}" />
+            </controls:SettingsCard>
+
+            <!--透明度设置-->
+            <controls:SettingsCard
+                Header="Window opacity"
+                Description="Adjust the transparency of the application window">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE890;" />
+                </controls:SettingsCard.HeaderIcon>
+
+            </controls:SettingsCard>
+
+            <!--音量设置-->
+            <controls:SettingsCard
+                Header="Audio volume"
+                Description="Adjust the audio output volume">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE767;" />
+                </controls:SettingsCard.HeaderIcon>
+
+            </controls:SettingsCard>
+
+            <!--波形图开关-->
+            <controls:SettingsCard
+                Header="Waveform display"
+                Description="Show the audio waveform during playback">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE9D9;" />
+                </controls:SettingsCard.HeaderIcon>
+
+            </controls:SettingsCard>
+        </StackPanel>
+    </Grid>
+</Page>

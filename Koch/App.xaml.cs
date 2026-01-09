@@ -1,81 +1,82 @@
-﻿using Koch.ViewModels;
+﻿using Koch.Services;
+using Koch.Views.Pages;
 using Koch.Views.Windows;
-using Microsoft.Extensions.Configuration;
+using Koch.ViewModels.Pages;
+using Koch.ViewModels.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.IO;
-using System.Reflection;
-using System.Security.Policy;
-using System.Windows;
-using System.Windows.Threading;
-using Wpf.Ui;
+using Microsoft.UI.Xaml;
+using System;
+
 
 namespace Koch
 {
-    /// <summary>
-    /// App.xaml 的交互逻辑
-    /// </summary>
-    public partial class App
+    public partial class App : Application
     {
-        // 注册服务
-        // https://docs.microsoft.com/dotnet/core/extensions/generic-host
-        // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
-        // https://docs.microsoft.com/dotnet/core/extensions/configuration
-        // https://docs.microsoft.com/dotnet/core/extensions/logging
-        private static readonly IHost _host = Host
-            .CreateDefaultBuilder()
-            .ConfigureAppConfiguration(c => { c.SetBasePath(AppContext.BaseDirectory); })
-            .ConfigureServices((context, services) =>
+        private Window? _window;
+        private readonly ServiceProvider _serviceProvider;
+
+        /// <summary>
+        /// 初始化应用程序
+        /// </summary>
+        public App()
+        {
+            InitializeComponent();
+            _serviceProvider = ConfigureServices();
+
+            // 初始化主题服务（加载保存的主题设置）
+            var themeService = _serviceProvider.GetRequiredService<IThemeService>();
+            themeService.Initialize();
+
+            // 注册应用退出时释放资源
+            UnhandledException += (sender, e) => DisposeServices();
+        }
+
+        /// <summary>
+        /// 配置依赖注入服务
+        /// </summary>
+        private static ServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+
+            // 注册 Services
+            services.AddSingleton<ISettingsService, SettingsService>();
+            services.AddSingleton<IWindowService, WindowService>();
+            services.AddSingleton<IThemeService, ThemeService>();
+
+            // 注册 Page ViewModels
+            services.AddTransient<SettingsPageViewModel>();
+
+            // 注册 Window ViewModels
+            services.AddTransient<MainWindowViewModel>();
+
+            // 注册 Page Views
+            services.AddTransient<SettingsPage>();
+
+            // 注册 Window Views
+            services.AddTransient<MainWindow>();
+
+            return services.BuildServiceProvider();
+        }
+
+        /// <summary>
+        /// 在应用程序启动时调用
+        /// </summary>
+        /// <param name="args">关于启动请求和流程的详细信息</param>
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            _window = _serviceProvider.GetRequiredService<MainWindow>();
+            _window.Activate();
+        }
+
+        /// <summary>
+        /// 释放依赖注入容器资源
+        /// </summary>
+        private void DisposeServices()
+        {
+            if (_serviceProvider is IDisposable disposable)
             {
-                // 注册 WPF UI 服务
-                services.AddSingleton<IThemeService, ThemeService>();
-                services.AddSingleton<ITaskBarService, TaskBarService>();
-                services.AddSingleton<ISnackbarService, SnackbarService>();
-                services.AddSingleton<IContentDialogService, ContentDialogService>();
-
-                // 注册 ViewModels
-                services.AddSingleton<MainWindowViewModel>();
-
-                // 注册 Windows
-                services.AddSingleton<MainWindow>();
-            }).Build();
-
-        /// <summary>
-        /// 获取服务
-        /// </summary>
-        public static IServiceProvider Services
-        {
-            get { return _host.Services; }
-        }
-
-        /// <summary>
-        /// 在应用程序启动时发生
-        /// </summary>
-        private async void OnStartup(object sender, StartupEventArgs e)
-        {
-            await _host.StartAsync();
-
-            // 显示主窗口
-            var mainWindow = Services.GetRequiredService<MainWindow>();
-            mainWindow.Show();
-        }
-
-        /// <summary>
-        /// 在应用程序退出时发生
-        /// </summary>
-        private async void OnExit(object sender, ExitEventArgs e)
-        {
-            await _host.StopAsync();
-
-            _host.Dispose();
-        }
-
-        /// <summary>
-        /// 在应用程序中引发未处理的异常时发生
-        /// </summary>
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            // 有关更多信息，请参见 https://docs.microsoft.com/en-us/dotnet/api/system.windows.application.dispatcherunhandledexception?view=windowsdesktop-6.0
+                disposable.Dispose();
+            }
         }
     }
 }

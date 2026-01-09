@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Koch (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Koch (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
