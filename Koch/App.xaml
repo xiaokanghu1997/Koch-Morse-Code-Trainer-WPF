@@ -8,6 +8,45 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--设置主题颜色-->
+            <ResourceDictionary.ThemeDictionaries>
+                <!--浅色主题-->
+                <ResourceDictionary x:Key="Light">
+                    <!--基础颜色定义-->
+                    <Color x:Key="SystemAccentColor">#53AFA2</Color>
+                    <Color x:Key="SystemAccentColorLight1">#6CBCB1</Color>
+                    <Color x:Key="SystemAccentColorLight2">#85C7BE</Color>
+                    <Color x:Key="SystemAccentColorLight3">#9DD2CB</Color>
+                    <Color x:Key="SystemAccentColorDark1">#46998E</Color>
+                    <Color x:Key="SystemAccentColorDark2">#3B7F76</Color>
+                    <Color x:Key="SystemAccentColorDark3">#2F665E</Color>
+
+                    <!--画刷资源-->
+                    <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="{StaticResource SystemAccentColor}" />
+                    <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="{StaticResource SystemAccentColorLight1}" />
+                    <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="{StaticResource SystemAccentColorLight2}" />
+                    <SolidColorBrush x:Key="AccentFillColorDisabledBrush" Color="{StaticResource SystemAccentColor}" Opacity="0.4" />
+                </ResourceDictionary>
+
+                <!-- 深色主题 -->
+                <ResourceDictionary x:Key="Dark">
+                    <!-- 基础颜色定义 -->
+                    <Color x:Key="SystemAccentColor">#78CFC2</Color>
+                    <Color x:Key="SystemAccentColorLight1">#8BD6CB</Color>
+                    <Color x:Key="SystemAccentColorLight2">#9EDDD3</Color>
+                    <Color x:Key="SystemAccentColorLight3">#B1E4DC</Color>
+                    <Color x:Key="SystemAccentColorDark1">#55C3B3</Color>
+                    <Color x:Key="SystemAccentColorDark2">#3DAD9C</Color>
+                    <Color x:Key="SystemAccentColorDark3">#308A7D</Color>
+
+                    <!-- 画刷资源 -->
+                    <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="{StaticResource SystemAccentColor}" />
+                    <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="{StaticResource SystemAccentColorDark1}" />
+                    <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="{StaticResource SystemAccentColorDark2}" />
+                    <SolidColorBrush x:Key="AccentFillColorDisabledBrush" Color="{StaticResource SystemAccentColor}" Opacity="0.4" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

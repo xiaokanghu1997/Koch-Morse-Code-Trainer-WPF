@@ -15,6 +15,19 @@
 	<NoWarn>$(NoWarn);SYSLIB1054;CA1806</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Assets\Fonts\**" />
+    <Content Remove="Assets\Fonts\**" />
+    <EmbeddedResource Remove="Assets\Fonts\**" />
+    <None Remove="Assets\Fonts\**" />
+    <Page Remove="Assets\Fonts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Icons\PackageLogo.scale-100.png" />
+    <None Remove="Assets\Icons\PackageLogo.scale-125.png" />
+    <None Remove="Assets\Icons\PackageLogo.scale-150.png" />
+    <None Remove="Assets\Icons\PackageLogo.scale-200.png" />
+    <None Remove="Assets\Icons\PackageLogo.scale-400.png" />
+    <None Remove="Assets\Icons\SplashScreen.scale-400.png" />
     <None Remove="Views\Pages\AboutPage.xaml" />
   </ItemGroup>
 
@@ -40,18 +53,11 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Fonts\" />
     <Folder Include="Commands\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Assets\Fonts\icomoon.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\Fonts\Koch.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="Assets\Icons\Koch.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -88,4 +94,7 @@
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
   </PropertyGroup>
+  <ItemGroup>
+    <PRIResource Remove="Assets\Fonts\**" />
+  </ItemGroup>
 </Project>
