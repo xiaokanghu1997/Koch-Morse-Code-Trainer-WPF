@@ -44,12 +44,14 @@ namespace Koch
             services.AddSingleton<IAppearanceService, AppearanceService>();
 
             // 注册 Page ViewModels
+            services.AddTransient<AboutPageViewModel>();
             services.AddTransient<SettingsPageViewModel>();
 
             // 注册 Window ViewModels
             services.AddTransient<MainWindowViewModel>();
 
             // 注册 Page Views
+            services.AddTransient<AboutPage>();
             services.AddTransient<SettingsPage>();
 
             // 注册 Window Views

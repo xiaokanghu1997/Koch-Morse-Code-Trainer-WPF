@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Koch.Views.Pages.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Koch.Views.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+
+    <Grid
+        Padding="20,10">
+        <StackPanel 
+            Spacing="5">
+            <!--软件信息-->
+            <controls:SettingsCard
+                Header="{x:Bind ViewModel.ApplicationTitle}"
+                Description="© 2026 Xiaokang HU. Licensed under MIT.">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE8EF;" />
+                </controls:SettingsCard.HeaderIcon>
+
+                <TextBlock Text="{x:Bind ViewModel.ApplicationVersion}" />
+            </controls:SettingsCard>
+
+            <!--设计原因-->
+            <controls:SettingsCard
+                Header="Purpose"
+                Description="Morse code listening practice">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xF272;" />
+                </controls:SettingsCard.HeaderIcon>
+
+                <TextBlock Text="Train faster and more accurate decoding" />
+            </controls:SettingsCard>
+
+            <!--联系方式-->
+            <controls:SettingsCard
+                Header="Contact"
+                Description="Get in touch with the developer">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xE715;" />
+                </controls:SettingsCard.HeaderIcon>
+
+                <TextBlock Text="xiaokangh@foxmail.com" />
+            </controls:SettingsCard>
+
+            <!--致谢信息-->
+            <controls:SettingsCard
+                Header="Acknowledgements"
+                Description="Thanks for the inspiration">
+                <controls:SettingsCard.HeaderIcon>
+                    <FontIcon Glyph="&#xEB51;" />
+                </controls:SettingsCard.HeaderIcon>
+
+                <TextBlock>
+                    <Run Text="Inspired by " />
+                    <Hyperlink NavigateUri="https://lcwo.net">
+                        LCWO.net
+                    </Hyperlink>
+                </TextBlock>
+            </controls:SettingsCard>
+        </StackPanel>
+    </Grid>
+</Page>

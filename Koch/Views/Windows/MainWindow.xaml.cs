@@ -8,9 +8,6 @@ using System;
 
 namespace Koch.Views.Windows
 {
-    /// <summary>
-    /// Ö÷´°¿Ú½»»¥Âß¼­
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
         private readonly IAppearanceService _appearanceService;
@@ -70,6 +67,7 @@ namespace Koch.Views.Windows
 
                 Page? page = tag switch
                 {
+                    "About" => _serviceProvider.GetRequiredService<AboutPage>(),
                     "Settings" => _serviceProvider.GetRequiredService<SettingsPage>(),
                     _ => null
                 };
