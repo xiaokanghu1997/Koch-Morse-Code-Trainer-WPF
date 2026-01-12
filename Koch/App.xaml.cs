@@ -51,6 +51,7 @@ namespace Koch
             services.AddTransient<MainWindowViewModel>();
 
             // 注册 Page Views
+            services.AddTransient<PracticePage>();
             services.AddTransient<AboutPage>();
             services.AddTransient<SettingsPage>();
 

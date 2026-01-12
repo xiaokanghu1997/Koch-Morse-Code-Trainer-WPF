@@ -84,7 +84,12 @@
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
 
-            <Frame x:Name="ContentFrame" />
+
+            <Frame x:Name="ContentFrame">
+                <Frame.RenderTransform>
+                    <ScaleTransform x:Name="ContentScaleTransform" />
+                </Frame.RenderTransform>
+            </Frame>
         </NavigationView>
     </Grid>
 </Window>

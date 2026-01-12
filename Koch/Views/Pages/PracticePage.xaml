@@ -1,0 +1,312 @@
+<Page
+    x:Class="Koch.Views.Pages.PracticePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Koch.Views.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Padding="20,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--第一行：课程信息和选择下拉框，左右布局-->
+        <Grid
+            Grid.Row="0"
+            Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <!-- 左侧：占满剩余空间 -->
+                <ColumnDefinition Width="*" />
+                <!-- 右侧：按内容自适应 -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--左侧：当前课程进度显示-->
+            <TextBlock
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                TextAlignment="Left">
+                <Run Text="You are currently on lesson " />
+                <Run Text="16" FontWeight="Bold" />
+                <Run Text=" of " />
+                <Run Text="40" FontWeight="Bold" />
+                <Run Text=" total lessons." />
+            </TextBlock>
+
+            <!--右侧：文本和课程选择下拉框-->
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Spacing="8">
+
+                <!--提示文本-->
+                <TextBlock
+                    Text="Change to lesson:"
+                    VerticalAlignment="Center" />
+
+                <!--课程选择下拉框-->
+                <ComboBox
+                    Width="100"
+                    Height="30"
+                    VerticalAlignment="Center"
+                    SelectedIndex="0">
+                        <ComboBoxItem Content="yellow"/>
+                        <ComboBoxItem Content="12"/>
+                        <ComboBoxItem Content="."/>
+                        <ComboBoxItem Content="?"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <!--第二行：当前课程包含的字符显示-->
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="0,0,0,10"
+            Spacing="8">
+
+            <!--提示文本-->
+            <TextBlock
+                Text="Current lesson characters:"
+                VerticalAlignment="Center" />
+
+            <!--当前所有练习字符-->
+            <TextBlock
+                Text="K"
+                FontWeight="Bold"
+                TextDecorations="Underline"
+                VerticalAlignment="Center" />
+        </StackPanel>
+
+        <!--第三行：字符音频播放控制，左右布局-->
+        <Grid
+            Grid.Row="2"
+            Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <!-- 左侧：占满剩余空间 -->
+                <ColumnDefinition Width="*" />
+                <!-- 右侧：按内容自适应 -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--左侧：当前字符-->
+            <StackPanel
+                Grid.Column="0"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Spacing="8">
+
+                <!--提示文本-->
+                <TextBlock
+                    Text="The sound of character:"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center" />
+
+                <!--当前字符-->
+                <TextBlock
+                    Text="K"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!--右侧：播放控制-->
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Spacing="8">
+
+                <!--播放进度条-->
+                <Slider 
+                    Width="120"
+                    VerticalAlignment="Center" />
+
+                <!--已播时长-->
+                <TextBlock
+                    Text="00:00"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    Text="/"
+                    VerticalAlignment="Center" />
+
+                <!--总时长-->
+                <TextBlock
+                    Text="00:00"
+                    VerticalAlignment="Center" />
+
+                <!--播放/暂停按钮-->
+                <Button
+                    Width="100"
+                    Height="30"
+                    VerticalContentAlignment="Center"
+                    Padding="0">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center"
+                        Spacing="10">
+                        <FontIcon 
+                            Glyph="&#xE768;" 
+                            FontSize="16" />
+                        <TextBlock 
+                            Text="Play"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
+                <!--重播按钮-->
+                <Button
+                    Width="100"
+                    Height="30"
+                    VerticalContentAlignment="Center"
+                    Padding="0">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center"
+                        Spacing="10">
+                        <FontIcon 
+                            Glyph="&#xE895;" 
+                            FontSize="14" />
+                        <TextBlock 
+                            Text="Restart"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!--第四行：练习文本音频播放控制，左右布局-->
+        <Grid
+            Grid.Row="3"
+            Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <!-- 左侧：占满剩余空间 -->
+                <ColumnDefinition Width="*" />
+                <!-- 右侧：按内容自适应 -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--左侧：文本提示-->
+            <TextBlock
+                Text="Practice text:"
+                FontWeight="Bold"
+                VerticalAlignment="Center" />
+
+            <!--右侧：播放控制-->
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Spacing="8">
+
+                <!--播放进度条-->
+                <Slider 
+                    Width="120"
+                    VerticalAlignment="Center" />
+
+                <!--已播时长-->
+                <TextBlock
+                    Text="00:00"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    Text="/"
+                    VerticalAlignment="Center" />
+
+                <!--总时长-->
+                <TextBlock
+                    Text="00:00"
+                    VerticalAlignment="Center" />
+
+                <!--播放/暂停按钮-->
+                <Button
+                    Width="100"
+                    Height="30"
+                    VerticalContentAlignment="Center"
+                    Padding="0">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center"
+                        Spacing="10">
+                        <FontIcon 
+                            Glyph="&#xE768;" 
+                            FontSize="16" />
+                        <TextBlock 
+                            Text="Play"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
+                <!--重播按钮-->
+                <Button
+                    Width="100"
+                    Height="30"
+                    VerticalContentAlignment="Center"
+                    Padding="0">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center"
+                        Spacing="10">
+                        <FontIcon 
+                            Glyph="&#xE895;" 
+                            FontSize="14" />
+                        <TextBlock 
+                            Text="Restart"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!--第五行：练习文本输入框-->
+        <RichEditBox
+            Grid.Row="4"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontSize="15"
+            FontFamily="Consolas"
+            PlaceholderText="Enter your practice text here ..." />
+
+        <!--第六行：结果检查按钮-->
+        <StackPanel
+            Grid.Row="5"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+
+            <Button
+                Width="140"
+                Height="30"
+                VerticalContentAlignment="Center"
+                Padding="0">
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Center"
+                    Spacing="10">
+                    <FontIcon 
+                        Glyph="&#xE73E;" 
+                        FontSize="16" />
+                    <TextBlock 
+                        Text="Check Result"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

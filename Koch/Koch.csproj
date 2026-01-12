@@ -12,23 +12,10 @@
     <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
-	<NoWarn>$(NoWarn);SYSLIB1054;CA1806</NoWarn>
+	<NoWarn>$(NoWarn);SYSLIB1054;CA1806;WMC0001</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Assets\Fonts\**" />
-    <Content Remove="Assets\Fonts\**" />
-    <EmbeddedResource Remove="Assets\Fonts\**" />
-    <None Remove="Assets\Fonts\**" />
-    <Page Remove="Assets\Fonts\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Assets\Icons\PackageLogo.scale-100.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-125.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-150.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-200.png" />
-    <None Remove="Assets\Icons\PackageLogo.scale-400.png" />
-    <None Remove="Assets\Icons\SplashScreen.scale-400.png" />
-    <None Remove="Views\Pages\AboutPage.xaml" />
+    <None Remove="Views\Pages\PracticePage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,12 +45,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Assets\Icons\Koch.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\Pages\AboutPage.xaml">
+    <Page Update="Views\Pages\PracticePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -94,7 +76,4 @@
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
   </PropertyGroup>
-  <ItemGroup>
-    <PRIResource Remove="Assets\Fonts\**" />
-  </ItemGroup>
 </Project>

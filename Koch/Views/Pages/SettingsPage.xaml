@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid 
-        Padding="20,10">
+        Padding="15,10">
         <StackPanel 
             Spacing="5">
             <!--主题设置-->
@@ -52,8 +52,7 @@
                         Text="{x:Bind ViewModel.OpacityPercentage, Mode=OneWay}"
                         VerticalAlignment="Center"
                         Width="35"
-                        TextAlignment="Right"
-                        FontWeight="SemiBold" />
+                        TextAlignment="Right" />
                 </StackPanel>
             </controls:SettingsCard>
 
@@ -81,8 +80,7 @@
                         Text="100%"
                         VerticalAlignment="Center"
                         Width="35"
-                        TextAlignment="Right"
-                        FontWeight="SemiBold" />
+                        TextAlignment="Right" />
                 </StackPanel>
             </controls:SettingsCard>
 
